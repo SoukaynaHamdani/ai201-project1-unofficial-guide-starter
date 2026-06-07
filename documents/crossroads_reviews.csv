@@ -1,13 +1,20 @@
-venue,rating,review_text,date
-Crossroads,2,"Long lines at lunch rush around noon, waited almost 20 minutes just to get into the hot food station. Food is fine but the wait kills it.",2024-09-12
-Crossroads,4,"Best dining hall on campus by far. The salad bar is huge and the stir fry station actually has good options for vegetarians.",2024-09-20
-Crossroads,3,"Solid variety but quality is hit or miss. Some nights the pasta is great, other nights it's mushy. Dessert section is always good though.",2024-10-02
-Crossroads,1,"Got food poisoning from the chicken once and now I avoid the meat stations. Stick to the salad bar and pizza to be safe.",2024-10-15
-Crossroads,5,"As a freshman this place is a lifesaver. Open late, swipe with meal plan, and the make-your-own waffle station on weekends is elite.",2024-10-21
-Crossroads,3,"Gets way too crowded between 12 and 1pm. If you go at 11:30 or after 1:30 it's totally fine and the food is fresher.",2024-11-01
-Crossroads,4,"Vegan options are surprisingly good here compared to other halls. The tofu scramble at breakfast is a staple for me.",2024-11-08
-Crossroads,2,"Overpriced if you pay out of pocket without a meal plan. Like $16 for a buffet that's mostly carbs. Only worth it with the plan.",2024-11-14
-Crossroads,4,"Staff are really friendly and the place is clean. Coffee machine is clutch during finals week when I basically lived here.",2024-12-03
-Crossroads,3,"Decent for the price with a meal plan. Wish they rotated the menu more, you get tired of the same options after a month.",2024-12-10
-Crossroads,5,"The international food nights are amazing, they did a Korean night with bibimbap that was better than some restaurants on Durant.",2025-01-22
-Crossroads,2,"Closes too early on weekends. If you have an evening class or sleep in on Saturday you basically miss out.",2025-02-04
+# ⚠️ COMMENTED OUT / NOT REAL DATA — PARKED FOR NOW
+# Provenance: this content was INVENTED by Claude (hand-written mock reviews),
+# NOT scraped from any source or generated from a link you provided.
+# Your assignment permits self-authored mock CSVs, but YOU should decide whether
+# to use this. To activate: delete these '#' comment lines (or read with
+# pandas.read_csv(path, comment='#') — note that also drops the header).
+#
+# venue,rating,review_text,date
+# Crossroads,2,"Long lines at lunch rush around noon, waited almost 20 minutes just to get into the hot food station. Food is fine but the wait kills it.",2024-09-12
+# Crossroads,4,"Best dining hall on campus by far. The salad bar is huge and the stir fry station actually has good options for vegetarians.",2024-09-20
+# Crossroads,3,"Solid variety but quality is hit or miss. Some nights the pasta is great, other nights it's mushy. Dessert section is always good though.",2024-10-02
+# Crossroads,1,"Got food poisoning from the chicken once and now I avoid the meat stations. Stick to the salad bar and pizza to be safe.",2024-10-15
+# Crossroads,5,"As a freshman this place is a lifesaver. Open late, swipe with meal plan, and the make-your-own waffle station on weekends is elite.",2024-10-21
+# Crossroads,3,"Gets way too crowded between 12 and 1pm. If you go at 11:30 or after 1:30 it's totally fine and the food is fresher.",2024-11-01
+# Crossroads,4,"Vegan options are surprisingly good here compared to other halls. The tofu scramble at breakfast is a staple for me.",2024-11-08
+# Crossroads,2,"Overpriced if you pay out of pocket without a meal plan. Like $16 for a buffet that's mostly carbs. Only worth it with the plan.",2024-11-14
+# Crossroads,4,"Staff are really friendly and the place is clean. Coffee machine is clutch during finals week when I basically lived here.",2024-12-03
+# Crossroads,3,"Decent for the price with a meal plan. Wish they rotated the menu more, you get tired of the same options after a month.",2024-12-10
+# Crossroads,5,"The international food nights are amazing, they did a Korean night with bibimbap that was better than some restaurants on Durant.",2025-01-22
+# Crossroads,2,"Closes too early on weekends. If you have an evening class or sleep in on Saturday you basically miss out.",2025-02-04

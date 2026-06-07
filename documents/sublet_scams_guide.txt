@@ -1,56 +1,64 @@
-UNOFFICIAL GUIDE: AVOIDING SUBLET & RENTAL SCAMS NEAR UC BERKELEY
-(Compiled from UCPD scam warnings, the Off-Campus Housing office, and student experiences.)
-
-WHY THIS MATTERS
-Every August and January, Berkeley housing demand spikes and scammers target
-students who are desperate for a place before classes start. Facebook groups
-("UC Berkeley Housing, Sublets & Roommates"), Craigslist, and even DMs on Reddit
-are common hunting grounds. The pressure to lock something in fast is exactly
-what scammers exploit.
-
-THE MOST COMMON RED FLAGS
-1. They ask for money before you ever see the unit in person.
-2. The "landlord" claims to be out of the country (job abroad, missionary trip,
-   military deployment) and cannot show you the place.
-3. They demand payment by wire transfer, Zelle, Venmo, gift cards, or crypto,
-   any method that is hard to trace or reverse.
-4. The rent is suspiciously cheap for the location ("$900 for a studio two
-   blocks from campus"). If it feels too good to be true, it is.
-5. They rush you: "I have 10 other people interested, send the deposit in the
-   next hour to hold it."
-6. The listing photos are stolen, reverse image search them; they often show up
-   on real estate sites in other cities.
-7. They refuse a video call or in-person meeting, or only communicate by text.
-
-THE CLASSIC "I'M ABROAD" SCRIPT
-A poster says they own a unit but had to leave the country urgently. They will
-mail you the keys after you wire a deposit and first month's rent. You drive by
-the building, it looks real, so you pay. The keys never arrive, and the actual
-tenants living there have no idea their building was used in a scam.
-
-THE SUBLET / ROOMMATE VARIANT
-You are the one listing a room. Someone "moving from out of state" sends a
-cashier's check for MORE than the deposit, then asks you to refund the
-difference. The check bounces days later, you are out the money you "refunded."
-Never accept overpayment or send money back to a stranger.
-
-HOW TO PROTECT YOURSELF
-- See the actual unit in person (or send a trusted friend) before paying anything.
-- Verify the landlord owns the property: Alameda County keeps public property
-  records you can check against the name on the lease.
-- Use the official Cal Rentals / Off-Campus Housing listings (och.berkeley.edu)
-  where listings are tied to verified accounts.
-- Get everything in writing and sign a real lease before money changes hands.
-- Pay by a method that is traceable and reversible; avoid wire and gift cards.
-- Never wire money or send a deposit to someone you have not met.
-- If a deal feels rushed or "off," walk away. There is always another listing.
-
-IF YOU GET SCAMMED
-- Report it to UCPD (university police) and the Berkeley Police Department.
-- File a complaint with the FTC at reportfraud.ftc.gov.
-- Warn other students by posting in the housing groups, you may save someone else.
-- Contact your bank immediately; some transfers can be stopped if caught fast.
-
-BOTTOM LINE
-A legitimate landlord will meet you, let you tour the unit, and accept normal
-payment after a signed lease. Anyone who won't do those three things is a risk.
+# ⚠️ COMMENTED OUT / PARKED FOR NOW
+# Provenance: Claude WROTE this text. The ideas are paraphrased from the real
+# UC Berkeley UCPD "Avoiding Scams" page (ucpd.berkeley.edu/safety/avoiding-scams)
+# and the Off-Campus Housing "Avoid Scams & Fraud" page (och.berkeley.edu/avoid-scams-and-fraud),
+# but the wording is Claude's, not a verbatim copy of any single link you gave.
+# YOU decide whether to keep this paraphrase or replace it with text you scrape/quote
+# yourself. To activate: remove the leading '# ' from the content lines below.
+#
+# UNOFFICIAL GUIDE: AVOIDING SUBLET & RENTAL SCAMS NEAR UC BERKELEY
+# (Compiled from UCPD scam warnings, the Off-Campus Housing office, and student experiences.)
+#
+# WHY THIS MATTERS
+# Every August and January, Berkeley housing demand spikes and scammers target
+# students who are desperate for a place before classes start. Facebook groups
+# ("UC Berkeley Housing, Sublets & Roommates"), Craigslist, and even DMs on Reddit
+# are common hunting grounds. The pressure to lock something in fast is exactly
+# what scammers exploit.
+#
+# THE MOST COMMON RED FLAGS
+# 1. They ask for money before you ever see the unit in person.
+# 2. The "landlord" claims to be out of the country (job abroad, missionary trip,
+#    military deployment) and cannot show you the place.
+# 3. They demand payment by wire transfer, Zelle, Venmo, gift cards, or crypto,
+#    any method that is hard to trace or reverse.
+# 4. The rent is suspiciously cheap for the location ("$900 for a studio two
+#    blocks from campus"). If it feels too good to be true, it is.
+# 5. They rush you: "I have 10 other people interested, send the deposit in the
+#    next hour to hold it."
+# 6. The listing photos are stolen, reverse image search them; they often show up
+#    on real estate sites in other cities.
+# 7. They refuse a video call or in-person meeting, or only communicate by text.
+#
+# THE CLASSIC "I'M ABROAD" SCRIPT
+# A poster says they own a unit but had to leave the country urgently. They will
+# mail you the keys after you wire a deposit and first month's rent. You drive by
+# the building, it looks real, so you pay. The keys never arrive, and the actual
+# tenants living there have no idea their building was used in a scam.
+#
+# THE SUBLET / ROOMMATE VARIANT
+# You are the one listing a room. Someone "moving from out of state" sends a
+# cashier's check for MORE than the deposit, then asks you to refund the
+# difference. The check bounces days later, you are out the money you "refunded."
+# Never accept overpayment or send money back to a stranger.
+#
+# HOW TO PROTECT YOURSELF
+# - See the actual unit in person (or send a trusted friend) before paying anything.
+# - Verify the landlord owns the property: Alameda County keeps public property
+#   records you can check against the name on the lease.
+# - Use the official Cal Rentals / Off-Campus Housing listings (och.berkeley.edu)
+#   where listings are tied to verified accounts.
+# - Get everything in writing and sign a real lease before money changes hands.
+# - Pay by a method that is traceable and reversible; avoid wire and gift cards.
+# - Never wire money or send a deposit to someone you have not met.
+# - If a deal feels rushed or "off," walk away. There is always another listing.
+#
+# IF YOU GET SCAMMED
+# - Report it to UCPD (university police) and the Berkeley Police Department.
+# - File a complaint with the FTC at reportfraud.ftc.gov.
+# - Warn other students by posting in the housing groups, you may save someone else.
+# - Contact your bank immediately; some transfers can be stopped if caught fast.
+#
+# BOTTOM LINE
+# A legitimate landlord will meet you, let you tour the unit, and accept normal
+# payment after a signed lease. Anyone who won't do those three things is a risk.
