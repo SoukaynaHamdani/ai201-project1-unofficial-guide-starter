@@ -8,9 +8,8 @@
 ---
 
 ## Domain
-
-<!-- What domain did you choose? Why is this knowledge valuable and hard to find through official channels? -->
-
+1. Domain: UC Berkeley Off-Campus Housing & Campus Survival Guide.
+Summary: This domain captures the unofficial, student-generated reality of living near UC Berkeley. It contrasts official university housing handbooks with real Reddit threads about notorious landlords, scraped Yelp reviews of campus dining, and wiki guides on neighborhood safety. This knowledge is crucial for survival but hard to find in one place because it is scattered across social media, tabular review data, and dense PDF contracts.
 ---
 
 ## Documents
