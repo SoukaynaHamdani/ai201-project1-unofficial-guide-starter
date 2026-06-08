@@ -41,7 +41,12 @@ def fetch_url(url, as_json=False):
             resp = requests.get(url, headers=HEADERS, timeout=20)
             resp.raise_for_status()
             time.sleep(REQUEST_DELAY)
-            return resp.json() if as_json else resp.text
+            if as_json:
+                return resp.json()
+            # Fix mojibake: requests often guesses latin-1; let charset detection win
+            # so curly apostrophes/quotes decode correctly instead of becoming U+FFFD.
+            resp.encoding = resp.apparent_encoding or resp.encoding
+            return resp.text
         except Exception as e:  # noqa: BLE001  (student project: keep it simple)
             print(f"    ! attempt {attempt + 1} failed for {url}: {e}")
             time.sleep(REQUEST_DELAY * (attempt + 1))
@@ -89,13 +94,43 @@ def ingest_html(src):
         return
     soup = BeautifulSoup(html, "lxml")
     # Remove non-content elements
-    for tag in soup(["script", "style", "nav", "header", "footer", "form", "noscript"]):
+    for tag in soup(["script", "style", "nav", "header", "footer", "form", "noscript",
+                     "aside", "button"]):
         tag.decompose()
-    text = soup.get_text(separator="\n")
-    # Collapse blank lines
-    lines = [ln.strip() for ln in text.splitlines() if ln.strip()]
+    # Prefer the main content region if the page marks one (MediaWiki, <main>, <article>).
+    # This drops site chrome (sidebars, menus) that isn't inside semantic nav tags.
+    main = (soup.select_one("#mw-content-text")
+            or soup.select_one("main")
+            or soup.select_one("article")
+            or soup.body
+            or soup)
+    text = main.get_text(separator="\n")
+    # MediaWiki appends a footer starting with "Retrieved from"; cut it and anything after.
+    cut = text.find("Retrieved from")
+    if cut != -1:
+        text = text[:cut]
+    # Common nav/boilerplate lines that survive tag stripping
+    BOILERPLATE = {"skip to main content", "skip to content", "menu", "search",
+                   "toggle navigation", "back to top"}
+    seen = set()
+    lines = []
+    for ln in text.splitlines():
+        ln = ln.strip()
+        if not ln or ln.lower() in BOILERPLATE:
+            continue
+        if ln in seen:           # drop repeated lines (menus echoed in multiple spots)
+            continue
+        seen.add(ln)
+        lines.append(ln)
     text = "\n".join(lines)
     title = soup.title.get_text(strip=True) if soup.title else src["name"]
+    # A page that cleans down to almost nothing is usually JavaScript-rendered:
+    # requests/BeautifulSoup only see the empty HTML shell. Skip + warn rather than
+    # emit a useless fragment chunk.
+    if len(text) < 200:
+        print(f"    ! '{src['name']}' yielded only {len(text)} chars after cleaning "
+              "(likely JS-rendered). Skipping. Save the text manually as a .txt instead.")
+        return
     yield {"title": title, "text": text, "url": src["location"]}
 
 
@@ -146,6 +181,9 @@ def main():
     os.makedirs(OUT_DIR, exist_ok=True)
     documents = []
     for src in SOURCES:
+        if not src.get("enabled", True):  # skip sources explicitly disabled
+            print(f"-- skipping {src['name']} (disabled)")
+            continue
         print(f"-> {src['name']} ({src['kind']})")
         extractor = EXTRACTORS[src["kind"]]
         count = 0

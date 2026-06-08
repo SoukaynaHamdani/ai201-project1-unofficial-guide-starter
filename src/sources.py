@@ -77,25 +77,31 @@ SOURCES = [
         "location": "documents/ca_tenants_guide.pdf",
     },
 
-    # ---------------- CSV (self-authored mock review data) ----------------
+    # ---------------- CSV (self-authored mock review data) — DISABLED ----------------
+    # "enabled": False means ingest.py skips it. These hold AI-authored mock reviews
+    # and are currently commented out in the files. Flip to True (and uncomment the
+    # file contents) only if you decide to use mock data.
     {
         "name": "Crossroads Dining Reviews",
         "kind": "csv",
         "source_type": "mock",
         "location": "documents/crossroads_reviews.csv",
+        "enabled": False,
     },
     {
         "name": "Durant Ave Cheap Eats Reviews",
         "kind": "csv",
         "source_type": "mock",
         "location": "documents/durant_eats_reviews.csv",
+        "enabled": False,
     },
 
-    # ---------------- TXT (self-authored guide) ----------------
+    # ---------------- TXT (self-authored guide) — DISABLED ----------------
     {
         "name": "Sublet Scams Guide",
         "kind": "txt",
         "source_type": "mock",
         "location": "documents/sublet_scams_guide.txt",
+        "enabled": False,
     },
 ]

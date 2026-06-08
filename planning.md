@@ -28,13 +28,7 @@ Summary: This domain captures the unofficial, student-generated reality of livin
 | 7 | BSC Policy Wiki | Official/legal: dense co-op rules, chores, conduct code | https://policy.bsc.coop/index.php/BSC_Policy_Wiki |
 | 8 | California Tenants Rights Guide | Official/legal PDF: tenant & landlord rights (for pdfplumber) | documents/ca_tenants_guide.pdf (download — search "California Tenants guide pdf") |
 | 9 | Crossroads dining reviews | Mock CSV: 1–5 star student reviews of the dining hall *(currently commented out — see file header; decide whether to use)* | documents/crossroads_reviews.csv |
-| 10 | Durant Ave cheap eats reviews | Mock CSV: reviews of Durant/"Asian Ghetto" food court *(currently commented out)* | documents/durant_eats_reviews.csv |
-
-> **Reminder — resource notes (working links + how to ingest each):**
-> - **Reddit (HTML/.json):** open the search URLs above in a browser, pick threads, append `.json` to scrape post + comments. Use a custom `User-Agent`.
-> - **PDF:** download the California Tenants guide into `documents/ca_tenants_guide.pdf` (the original "Off-Campus-Housing-Guide.pdf" link does **not** exist).
-> - **CSV/TXT:** `documents/crossroads_reviews.csv`, `documents/durant_eats_reviews.csv`, and `documents/sublet_scams_guide.txt` are **self-authored mock data, currently commented out** pending your decision to use them.
-> - Dropped from the original list: the placeholder datasets (plotly `style-api.csv`, cs109 `restaurants.csv`, `google-10000-english.txt`) and the off-topic EECS org page — all were unrelated or non-functional.
+| 10 | Durant Ave cheap eats reviews | Mock CSV: reviews of Durant/"Asian Ghetto" food court *(currently commented out)* | documents/durant_eats_reviews.csv  
 
 ---
 
@@ -45,9 +39,9 @@ Summary: This domain captures the unofficial, student-generated reality of livin
      numbers fit the structure of your documents.
      A review-heavy corpus warrants different chunking than a long FAQ. -->
 
-**Chunk size:** 800 characters (sliding window, split on whitespace so words aren't cut).
+**Chunk size:** 800 characters (sliding window, split on whitespace so words aren't cut). 
 
-**Overlap:** 150 characters.
+**Overlap:** 150 characters.  #10 to 20 percent
 
 **Reasoning:** My corpus is mixed-length, so a single rigid size doesn't fit everything.
 The short, atomic sources — CSV dining reviews and individual Reddit comments — are only
@@ -72,8 +66,7 @@ end of one chunk — still appears intact in the next chunk, so it stays retriev
      support, accuracy on domain-specific text, latency? -->
 
 **Embedding model:** `all-MiniLM-L6-v2` via sentence-transformers (384-dim). It runs locally
-with no API cost, is fast, and gives solid general-purpose semantic quality — a good fit for a
-student project on a free budget.
+with no API cost, is fast, and gives solid general-purpose semantic quality .
 
 **Top-k:** 4. This is enough to surface more than one perspective on a query (for example, an
 official policy chunk plus a couple of student opinions) without flooding the LLM with
@@ -105,8 +98,8 @@ The core tradeoff is accuracy on domain-specific text against latency, cost, and
 |---|----------|-----------------|
 | 1 | What payment methods are red flags for a rental/sublet scam? | Untraceable, hard-to-reverse methods: wire transfer, gift cards, crypto, Zelle/Venmo. (Source #5/#6 — OCH & UCPD scam pages) |
 | 2 | Why is a landlord "being out of the country" treated as a warning sign? | It's the classic scam script used to justify not showing the unit in person and to collect a deposit before any viewing. (Source #5/#6, scams guide) |
-| 3 | What do students say about lunch-rush wait times at Crossroads dining hall? | Long lines around noon, waits up to ~20 min; better before 11:30 or after 1:30. *(Source #9 — requires activating the mock CSV)* |
-| 4 | What's an affordable late-night food option near campus on Durant? | La Burrita (cheap, large burritos, open late) or Steve's Korean BBQ. *(Source #10 — requires activating the mock CSV)* |
+| 3 | What do students say about lunch-rush wait times at Crossroads dining hall? | Long lines around noon, waits up to ~20 min; better before 11:30 or after 1:30. *(Source #9 )* |
+| 4 | What's an affordable late-night food option near campus on Durant? | La Burrita (cheap, large burritos, open late) or Steve's Korean BBQ. *(Source #10  )* |
 | 5 | Beyond paying rent, what obligation do BSC co-op members have? | Required workshift/chore hours plus compliance with the conduct code. (Source #7 — BSC policy wiki) |
 
 ---
@@ -175,20 +168,25 @@ my chunking decision (800 chars / 150 overlap) and my `source_type` tagging sche
 to implement the ingestion layer. It produced `src/sources.py` (the 10-source registry),
 `src/ingest.py` (per-format extractors for Reddit `.json`, HTML via BeautifulSoup, PDF via
 pdfplumber, CSV via pandas, and TXT), and `src/chunk.py` (the sliding-window `chunk_text()` that
-carries metadata onto every chunk). **How I verify:** run both scripts on real data and inspect
-`documents.jsonl` / `chunks.jsonl` — checking the chunk count, that no review was split, and that
-each chunk kept its `source_type` and `url`. **What I overrode:** I commented out the mock CSV/TXT
+carries metadata onto every chunk). 
+
+**How I verify:** run both scripts on real data and inspect
+`documents.json` / `chunks.json` — checking the chunk count, that no review was split, and that
+each chunk kept its `source_type` and `url`.
+ **What I overrode:** I commented out the mock CSV/TXT
 files so I can verify or replace that content myself instead of trusting AI-generated reviews.
 
-**Milestone 4 — Embedding and retrieval:** I'll give Claude my Retrieval Approach section
-(MiniLM, top-k=4, ChromaDB) plus the chunk schema from `chunk.py`, and ask it to write `embed.py`
+**Milestone 4 — Embedding and retrieval:** I'll use my Retrieval Approach section
+(MiniLM, top-k=4, ChromaDB) plus the chunk schema from `chunk.py`, and write `embed.py`
 (embed each chunk and persist to a ChromaDB collection with metadata) and `query.py` (embed a
-query, retrieve the top-k chunks, return text + metadata). **How I verify:** run my 5 evaluation
+query, retrieve the top-k chunks, return text + metadata).
+ **How I verify:** run my 5 evaluation
 questions and confirm the retrieved chunks are actually on-topic and from the expected sources.
 
-**Milestone 5 — Generation and interface:** I'll give Claude my grounding requirements and the
+**Milestone 5 — Generation and interface:** I'll use my grounding requirements and the
 Groq setup, and ask for a `generate()` that builds a prompt from the retrieved chunks with a
 system instruction enforcing grounding ("answer only from the provided context; cite each
 claim's `source_type` and `url`; if the answer isn't in the context, say so"), plus a small
-Gradio or Streamlit UI. **How I verify:** ask an out-of-domain question and confirm the system
+Gradio or Streamlit UI. 
+**How I verify:** ask an out-of-domain question and confirm the system
 refuses to answer rather than hallucinating, and check that answers cite their sources.
