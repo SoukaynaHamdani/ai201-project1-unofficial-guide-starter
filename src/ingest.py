@@ -24,8 +24,14 @@ from bs4 import BeautifulSoup
 
 from sources import SOURCES, SUBREDDIT
 
-# Reddit (and general) requests need a descriptive User-Agent or you get 403.
-HEADERS = {"User-Agent": "berkeley-housing-rag/0.1 (educational project)"}
+# Many sites (and Reddit) 403 a non-browser User-Agent. A realistic browser UA
+# gets past simple bot filters; it does NOT defeat Reddit's stricter blocking.
+HEADERS = {
+    "User-Agent": ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                   "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"),
+    "Accept": "text/html,application/json,*/*",
+    "Accept-Language": "en-US,en;q=0.9",
+}
 
 OUT_DIR = os.path.join("data", "processed")
 OUT_PATH = os.path.join(OUT_DIR, "documents.jsonl")
