@@ -3,14 +3,13 @@ chromadb>=0.6.0
 groq==0.15.0
 python-dotenv==1.0.1
 
-# Document ingestion (Milestone 3)
-requests==2.32.3
-beautifulsoup4==4.12.3
-lxml==5.3.0
-pandas==2.2.3
-pdfplumber==0.11.4
+# Document ingestion — add if your documents/ folder contains .pdf files:
+requests==2.32.3  #so it grabs content from web
+beautifulsoup4==4.12.3  #filer the html just the text of reddit comm for example removes ads headers footers
+lxml==5.3.0   #fast version of beautifule oop to scrap big filles 
+pandas==2.2.3 #data organization  to produce clean dataframes
+pdfplumber==0.11.4   #for pdfs text extraction 
 
-# Query interface — add whichever you use for Milestone 5:
-# gradio>=6.9.0
-# streamlit>=1.40.0
+# Query interface (Milestone 5)
+gradio>=6.9.0
 
